@@ -527,7 +527,7 @@ It is also a good practice to annotate overridden methods with `@Override` to ma
                              //  the same reference to an instance 
         ```
 
-* What is a ThreadPoolExecutor? [Mindorks](https://blog.mindorks.com/threadpoolexecutor-in-android-8e9d22330ee3)
+* What is a `ThreadPoolExecutor`? [Mindorks](https://blog.mindorks.com/threadpoolexecutor-in-android-8e9d22330ee3)
 * What the difference between local, instance and class variables?
   - Local variables exist only in methods that created them, they are stored separately in their respected Thread Stack (for more information, see question about Java Memory Model) and cannot have their reference passed outside of the method scope. That also means that they cannot be assigned any access modifier or made `static` - because they only exist during enclosing method's execution and those modifiers just do not make sense, since no other outside method can get them anyway.
   - Instance variables are the ones, that are declared in classes and their value can be different from one instance of the class to another, but they always require that class' instance to exist.
@@ -538,7 +538,7 @@ It is also a good practice to annotate overridden methods with `@Override` to ma
   - Dependency injection is a very powerful technique, where you relay the task of providing object with its' dependencies on instances of other objects (OOP Composition, [Wikipedia](https://en.wikipedia.org/wiki/Object_composition?oldformat=true)) to a separate class. This allows for fewer constructors, setters, factories and builders as all those functions are taken care of by the DI framework that you use. Also, and it may seem as a minor advantage, but if you use DI framework you need not worry about going through the project and changing all of (example names) `YourCustomInterface customInterfaceObject = new YourCustomClass();` to a new implementaion, as long as your new class (in place of `YourCustomClass`) still implements `CustomInterface` - you can just tweak the DI factory class to produce new class and voila - this new class will be automatically instantiated throughout your code. This allows for better maintenence and control over the program. Another example of DI usage is unit-testing - it allows to conveniently inject all needed dependencies and keep the amount of written code at a lower level.
     - One of the most popular libraries for DI for Android is Dagger 2. [Mindorks](https://blog.mindorks.com/a-complete-guide-to-learn-dagger-2-b4c7a570d99c)
 * What does the keyword `synchronized` mean?
-* What are `transient` and `volatile` modifiers?
+* What are `transient` and `volatile` modifiers? [Link](http://javaexplorer03.blogspot.in/2015/07/difference-between-volatile-and.html)
 * What is the `finalize()` method?
 * How does the `try{} catch {} finally{}` works?
 * What is the difference between instantiation and initialization of an object?
@@ -558,6 +558,8 @@ It is also a good practice to annotate overridden methods with `@Override` to ma
             j = 10; // Instantiated variable
         ```
 * When is a `static` block run?
+    - Code inside static block is executed only once: the first time you make an object of that class or the first time you access a static member of that class (even if you never make an object of that class).
+    
 * Explain Generics in Java?
     - Generics were included in Java language to provide stronger type checks, by allowing the programmer to define, which classes can be used with other classes 
         > In a nutshell, generics enable types (classes and interfaces) to be parameters when defining classes, interfaces and methods. Much like the more familiar formal parameters used in method declarations, type parameters provide a way for you to re-use the same code with different inputs. The difference is that the inputs to formal parameters are values, while the inputs to type parameters are types. ([Official Java Documentation](https://docs.oracle.com/javase/tutorial/java/generics/why.html))  
@@ -569,12 +571,13 @@ It is also a good practice to annotate overridden methods with `@Override` to ma
         And let the compiler take care of noticing, if you put some object, of type other than `Integer` into this list and warn you.
     - It should be noted that standard class hierarchy *does not* apply to generic types. It means that `Integer` in `List<Integer>` is not inherited from `<Number>` - it is actually inherited directly from `<Object>`. You can still put some constraints on what classes can be passed as a parameter into a generic by using [wildcards](https://docs.oracle.com/javase/tutorial/extra/generics/wildcards.html) like `<?>`, `<? extends MyCustomClass>` or `<? super Number>`.
     - While generics are very useful, late inclusion into Java language has put some restraints on their implementation - backward compatibility required them to remain just "syntactic sugar" - they are erased ([type erasure](https://docs.oracle.com/javase/tutorial/java/generics/erasure.html)) during compile-time and replaced with `object` class.
-* Difference between `StringBuffer` and `StringBuilder`?
+* Difference between `StringBuffer` and `StringBuilder`? [Link](http://www.journaldev.com/137/stringbuffer-vs-stringbuilder)
 * How is a `StringBuilder` implemented to avoid the immutable string allocation problem?
 * What is Autoboxing and Unboxing?
   - Autoboxing and Unboxing is the process of automatic wrapping (putting in a box) and unwrapping (getting the value out) of primitive data types, that have "wrapper" classes. So `int` and `Integer` can (almost always) be used interchangeably in Java language, meaning a method `void giveMeInt(int i) { ... }` can take `int` as well as `Integer` as a parameter.
-* What’s the difference between an Enumeration and an Iterator?
+* What’s the difference between an Enumeration and an Iterator? [Link](http://javaconceptoftheday.com/differences-between-enumeration-vs-iterator-in-java/)
 * What is the difference between fail-fast and fail safe in Java?
+* What is Java NIO? [Link](http://tutorials.jenkov.com/java-nio/index.html)
 * What is Java priority queue?
 * What is Java Memory Model? What contracts does it guarantee? How are its' Heap and Stack organized? [Jenkov](http://tutorials.jenkov.com/java-concurrency/java-memory-model.html)
 * What is memory leak and how does Java handle it?
@@ -624,10 +627,10 @@ It is also a good practice to annotate overridden methods with `@Override` to ma
 * What is an `AsyncTask`?
 * What is a `BroadcastReceiver`? [StackOverflow](https://stackoverflow.com/questions/5296987/what-is-broadcastreceiver-and-when-we-use-it)
 * What is a `LocalBroadcastManager`? [Developer Android](https://developer.android.com/reference/android/support/v4/content/LocalBroadcastManager.html)
-* What is a JobScheduler? [Vogella](http://www.vogella.com/tutorials/AndroidTaskScheduling/article.html)
+* What is a `JobScheduler`? [Vogella](http://www.vogella.com/tutorials/AndroidTaskScheduling/article.html)
 * What is DDMS and what can you do with it?
 * What is the support library? Why was it introduced?[MartianCraft](http://martiancraft.com/blog/2015/06/android-support-library/)
-* What is a ContentProvider and what is it typically used for?
+* What is a `ContentProvider` and what is it typically used for?
 * What is Android Data Binding? [Developer Android](https://developer.android.com/topic/libraries/data-binding/index.html)
 * What are Android Architecture Components? [Developer Android](https://developer.android.com/topic/libraries/architecture/index.html)
 * What is ADB?
@@ -648,17 +651,17 @@ It is also a good practice to annotate overridden methods with `@Override` to ma
 * Difference between `View.GONE` and `View.INVISIBLE`?
 * What is the difference between a regular bitmap and a nine-patch image?
 * Tell about the bitmap pool. [Mindorks](https://blog.mindorks.com/how-to-use-bitmap-pool-in-android-56c71a55533c)
-* How to avoid memory leaks in Android?
+* How to avoid memory leaks in Android? [Mindorks](https://mindorks.com/blog/detecting-and-fixing-memory-leaks-in-android)
 * What are widgets on Home-Screen in Android?
 * What is AAPT?
-* How do you find memory leaks in Android applications?
+* How do you find memory leaks in Android applications? [Mindorks](https://mindorks.com/blog/detecting-and-fixing-memory-leaks-in-android)
 * How do you troubleshoot a crashing application?
 * Why should you avoid to run non-ui code on the main thread?
 * How did you support different types of resolutions?
 * What is Doze? What about App Standby?
 * What can you use for background processing in Android?
 * What is ORM? How does it work?
-* What is a Loader?
+* What is a `Loader`?
 * What is the NDK and why is it useful?
 * What is the StrictMode? [Mindorks](https://blog.mindorks.com/use-strictmode-to-find-things-you-did-by-accident-in-android-development-4cf0e7c8d997)
 * What is Lint? What is it used for?
@@ -670,7 +673,7 @@ It is also a good practice to annotate overridden methods with `@Override` to ma
 * What is the best way to update the screen periodically?
 * What are the different types of Broadcasts?
 * Have you developed widgets? Describe. [Mindorks](https://blog.mindorks.com/android-widgets-ad3d166458d3)
-* What is Context? How is it used? [Medium](https://medium.com/p/understanding-context-in-android-application-330913e32514)
+* What is `Context`? How is it used? [Medium](https://medium.com/p/understanding-context-in-android-application-330913e32514)
 * Do you know what is the view tree? How can you optimize its depth?
 * What is the `onTrimMemory` method?
 * Is it possible to run an Android app in multiple processes? How?
@@ -692,7 +695,7 @@ It is also a good practice to annotate overridden methods with `@Override` to ma
 ### Architecture
 
 * Describe the architecture of your last app.
-* Describe MVP. [Mindorks](https://blog.mindorks.com/essential-guide-for-designing-your-android-app-architecture-mvp-part-1-74efaf1cda40)
+* Describe MVP. [Mindorks](https://mindorks.com/course/android-mvp-introduction)
 * What is presenter?
 * What is model?
 * Describe MVC.
@@ -739,6 +742,7 @@ It is also a good practice to annotate overridden methods with `@Override` to ma
 * Describe database.
 * Project Management tool - trello, basecamp, kanban, jira, asana.
 * About build System - gradle, ant, buck. 
+* About multiple apk for android application. [Mindorks](https://mindorks.com/blog/how-to-create-multiple-apk-files-for-android-application)
 * Reverse Engineering an APK.
 * What is proguard used for?
 * What is obfuscation? What is it used for? What about minification?
